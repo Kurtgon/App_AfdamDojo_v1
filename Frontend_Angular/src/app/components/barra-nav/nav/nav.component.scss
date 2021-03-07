@@ -1,0 +1,150 @@
+@import 'src/sass/abstracts/mixins';
+@import 'src/sass/abstracts/variables';
+
+
+//Estilos del contenedor principal de la navegación
+    .container{
+        @include contenedorCentrado();
+    }
+    
+    .barraNavegacion{
+        display: flex;
+        background: $colorFondoPrincipal;
+        width: 95vw;
+        justify-content: space-between;
+    
+            .imagenLogo{
+                height: 12vh;
+                padding-left: 4vw;
+            
+                img{
+                    height: 12vh;
+                }
+            }
+    }
+//Estilos del menu de navegación
+    .menu{
+        display: flex;
+        align-items: flex-end;
+        
+        .botonIconoNav{
+            height: 10vh;
+            color: $colorTexoNav;
+            border: 0;
+            background: transparent;
+           
+            img{
+                height: 2vh;
+                margin-right: 1vw;
+            }
+        }
+    
+        .botonIconoNav:hover{
+                background: $gradienteHover;
+                box-shadow: $efectoSombra;
+              
+        }
+    }
+
+// Para resoluciones entre 640 píxeles y 1280 píxeles de ancho (tablets)
+@media only screen and (min-width: 600px) {
+
+    .container{
+        @include contenedorCentrado();
+    }
+    
+    .barraNavegacion{
+        display: flex;
+        background-color: $colorFondoPrincipal;
+        width: 95vw;
+        justify-content: space-between;
+    
+            .imagenLogo{
+                
+                @include medidasLogo();
+            
+                img{
+                    height: 12vh;
+                }
+            }
+    }
+    
+    .menu{
+        display: flex;
+        align-items: flex-end;
+        
+        .botonIconoNav{
+            height: 7vh;
+            color: $colorTexoNav;
+            border: 0;
+            background: transparent;
+           
+            img{
+                height: 2vh;
+                margin-right: 1vw;
+            }
+        }
+    
+        .botonIconoNav:hover{
+                background: $gradienteHover;
+                box-shadow: $efectoSombra;
+              
+        }
+    }
+
+}
+
+//Para resoluciones mayores de 1280 píxeles (desktop)
+@media only screen and (min-width: 1440px) {
+  
+    .container{
+    
+         @include contenedorCentrado();
+    
+    }
+    
+    .barraNavegacion{
+        display: flex;
+        background-color: $colorFondoPrincipal;
+        width: 95vw;
+            justify-content: space-between;
+    
+            .imagenLogo{
+                height: 12vh;
+                padding-left: 4vw;
+            
+                img{
+                    height: 12vh;
+                }
+            }
+    }
+    
+    .menu{
+        display: flex;
+        align-items: flex-end;
+        
+        .botonIconoNav{
+            font-size: 1.5vh;
+            height: 6vh;
+            color: $colorTexoNav;
+            border: 0;
+            background: transparent;
+           
+            img{
+                height: 3vh;
+                font-size: 40px;
+                margin-right: 1vw;
+            }
+        }
+    
+        .botonIconoNav:hover{
+                background: $gradienteHover;
+                box-shadow: $efectoSombra;
+              
+        }
+    }
+
+}
+
+
+

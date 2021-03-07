@@ -1,0 +1,34 @@
+//Mixins
+
+@mixin contenedorCentradoPorColumnas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin contenedorCentrado{
+  display: flex;
+  justify-content: center;
+}
+
+@mixin medidasLogo {
+  height: 12vh;
+  padding-left: 4vw;
+}
+
+$color:white;
+@mixin coloresBoton($color: #D60000) {
+  background-color: $color;
+
+}
+
+@mixin formatoInput{
+  background-color: rgb(209, 206, 206);
+  padding-left: 4vw;
+  height: 5vh;
+}
+
+@mixin textoBotones{
+  font-family: 'Monda';
+  font-weight: bold;
+}

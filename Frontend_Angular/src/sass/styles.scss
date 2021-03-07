@@ -1,0 +1,23 @@
+
+// Carpeta Abstracts
+// Importamos los estilos de las variables y los mixins
+@import './abstracts/variables';
+@import './abstracts/mixins';
+
+//Carpeta base
+//Importamos los estilos de las tipografías
+@import './base/typography';
+
+//Carpeta components
+//Importamos los botones y las cards
+@import './components/buttons';
+@import './components/cards';
+
+//Carpeta layout
+//Importamos el header, navigation, form, footer
+@import './layout/header';
+@import './layout/navigation';
+@import './layout/forms';
+@import './layout/footer';
+@import './layout/grid';
+

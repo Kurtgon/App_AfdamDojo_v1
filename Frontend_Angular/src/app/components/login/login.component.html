@@ -1,0 +1,32 @@
+<div class="main">
+    <div class="card">
+        <div class="cardHeader">
+            <h2>Afdam Dojo</h2>
+        </div>
+        <div class="img-card">
+            <img src="../../../assets/imagenes/Disciplina_jiujitsu_afdam.jpg"
+                alt="imagen de cabecera de la pagina de inicio de sesion">
+        </div>
+        <div class="content">
+            <div class="formGeneral" [hidden]="submitted">
+                <h2>Iniciar Sesión</h2>
+                <form (ngSubmit)="autenticarUser()" #loginForm="ngForm">
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" placeholder="Username" id="username" required [(ngModel)]="user.username"
+                            name="username" #username="ngModel">
+                        <div [hidden]="username.valid || username.pristine" class="alert-danger"> *Campo Obligatorio</div>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" placeholder="Password" id="password" required [(ngModel)]="user.password"
+                            name="password" #password="ngModel">
+                        <div [hidden]="password.valid || password.pristine" class="alert-danger">*Campo Obligatorio </div>
+                    </div>
+                    <button class="btn" type="submit" >Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+@import 'src/sass/abstracts/mixins';
+@import 'src/sass/abstracts/variables';
+
+//Estilos de registro
+
+.main{
+    @include contenedorCentrado();
+}
+
+.card {
+    width: 95vw;
+    background-color: $colorFondoPrincipal;
+}
+
+.cardHeader  {
+    display: flex;
+    padding:1vh 1vw;
+    background: $colorCabeceraTarjeta;
+}
+
+h2{
+    color: $colorTexoNav;
+    padding-left: 4vw;
+}
+.img-card img{
+    width: 100%;
+}
+
+.content{
+    @include contenedorCentradoPorColumnas();
+    padding: 1vh 0;
+    background-color: $colorFondoPrincipal;
+    font-size: 2vh;
+}
+
+.field{
+    color:$colorCabeceraTarjeta;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    font-family: 'Monda';
+    margin: 2vh 0;
+
+    input{
+        border-width: 0;
+        border-radius: 10vh;
+        background-color: rgb(148, 144, 144);
+        padding-left: 4vw;
+        font-size: 2vh;
+    }
+    
+    select{
+        height: 3vh;
+        color: $colorFondoPrincipal;
+    }
+}
+
+.btn{
+    @include coloresBoton();
+    color:$color;
+    @include textoBotones();
+    width:90%;
+    padding:.8rem;
+    border:none;  
+    border-radius:5px;
+    transition:.2s ease-in-out;
+    cursor:pointer;
+
+    margin: 2vh 0;
+    font-size: 2vh;
+  }
+  .btn:hover{
+    background: $gradienteHover;
+    box-shadow: $efectoSombra;
+  }
+  .errorEnValidacion{
+      color:#D60000;
+  }

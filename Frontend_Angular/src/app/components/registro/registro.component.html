@@ -1,0 +1,87 @@
+<div class="main">
+    <div class="card">
+        <div class="cardHeader">
+            <h2>Registrarse</h2>
+        </div>
+        <div class="img-card">
+            <img src="../../../assets/imagenes/Disciplina_kickboxing_afdam_a.jpg"
+                alt="imagen de cabecera de la pagina de registro">
+        </div>
+        <div class="content">
+            <h2>Datos Personales</h2>
+            <form [formGroup]="loginForm">
+                <div class="field">
+                    <label>Usuario</label>
+                    <input type="text" placeholder="Nombre de usuario" formControlName="usuario">
+                    <div class="campos" *ngIf="loginForm.controls.usuario.errors != undefined">
+                        <div class="errorEnValidacion" *ngIf="loginForm.controls.usuario.errors.minlength">El usuario
+                            tiene que tener más de tres caractéres</div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="Password" formControlName="password">
+                    <div class="campos" *ngIf="loginForm.controls.password.errors != undefined">
+                        <div class="errorEnValidacion" *ngIf="this.loginForm.controls.password.errors?.required">El
+                            campo password es obligatorio</div>
+                        <div class="errorEnValidacion" *ngIf="this.loginForm.controls.password.errors?.minlength">El
+                            campo password tiene que tener mínimo 4 caractéres</div>
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" placeholder="Email" formControlName="email">
+                        <div class="campos" *ngIf="loginForm.controls.email.errors != undefined">
+                            <div class="errorEnValidacion" *ngIf="loginForm.controls.email.errors?.required">El campo
+                                email es obligatorio</div>
+                            <div class="errorEnValidacion" *ngIf="loginForm.controls.email.errors.minlength">El correo
+                                tiene que tener más de tres caractéres</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Nombre</label>
+                        <input type="text" placeholder="Nombre" formControlName="name">
+                    </div>
+                    <div class="field">
+                        <label>Apellidos</label>
+                        <input type="text" placeholder="Apellidos" formControlName="surnames">
+                    </div>
+                    <div class="field">
+                        <label>DNI</label>
+                        <input type="text" placeholder="DNI" formControlName="dni">
+                        <div class="campos" *ngIf="loginForm.controls.dni.errors != undefined">
+                            <div class="errorEnValidacion" *ngIf="loginForm.controls.dni.errors?.required">El campo dni
+                                es obligatorio</div>
+                            <div class="errorEnValidacion" *ngIf="loginForm.controls.dni.errors.minlength">El correo
+                                tiene que tener 8 caractéres</div>
+                        </div>
+                        <div class="field">
+                            <label>TLF</label>
+                            <input type="text" placeholder="tlf" formControlName="tlf">
+                        </div>
+                        <div class="field">
+                            <label>Fecha Nacimiento</label>
+                            <input type="text" placeholder="fecha Nacimiento" formControlName="birthdate">
+                        </div>
+                        <div class="field">
+                            <label>Número de Contacto</label>
+                            <input type="text" placeholder="número de contacto" formControlName="contact">
+                        </div>
+                        <div class="field">
+                            <label>Alergias</label>
+                            <input type="text" placeholder="Alergias" formControlName="allergy">
+                        </div>
+                        <div class="field">
+                            <label for="disciplinas">Disciplinas</label>
+                            <select class= "desplegable" name="disciplinas" formControlName="disciplinas">
+                                <option *ngFor="let disciplina of disciplinas" [value]="disciplina">
+                                    {{disciplina}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn" (click)="enviar()">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 
