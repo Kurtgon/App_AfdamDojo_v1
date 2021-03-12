@@ -22,7 +22,7 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" placeholder="Password" id="password" required [(ngModel)]="user.password"
                             name="password" #password="ngModel">
-                        <div [hidden]="password.valid || password.pristine" class="alert-danger">*Campo Obligatorio </div>
+                        <div [hidden]="password.valid || password.pristine" class="alert-danger"> *Campo Obligatorio </div>
                     </div>
                     <button class="btn" type="submit" >Entrar</button>
                 </form>

@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  signUpUrl: "http://localhost:8080/user/sign-up",
+  loginUrl: "http://localhost:8080/user/login",
+  endpointDisciplinas: "http://localhost:8080/disciplinas",
+  upPassword: "http://localhost:8080/upPassUser",
+  upMisDatos: "http://localhost:8080/alumno"
 };
 
 /*

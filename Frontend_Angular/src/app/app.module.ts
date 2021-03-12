@@ -13,18 +13,17 @@ import { NavComponent } from './components/barra-nav/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserloginComponent } from './components/userlogin/userlogin.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     RegistroComponent,
-    
     InicioLoginRegistroComponent,
-    
     LoginComponent,
-    
     NavComponent,
-    
-    UserloginComponent
+    UserloginComponent,
+  
   ],
   imports: [
     BrowserModule,

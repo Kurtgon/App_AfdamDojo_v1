@@ -12,12 +12,14 @@
 //Importamos los botones y las cards
 @import './components/buttons';
 @import './components/cards';
+@import './components/container';
 
 //Carpeta layout
 //Importamos el header, navigation, form, footer
 @import './layout/header';
 @import './layout/navigation';
 @import './layout/forms';
+@import './layout/formsReactive';
 @import './layout/footer';
 @import './layout/grid';
 

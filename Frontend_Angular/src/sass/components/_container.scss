@@ -1,0 +1,7 @@
+@import 'src/sass/abstracts/mixins';
+
+//Estilo del contenedor principal
+.main{
+    @include contenedorCentrado();
+}
+

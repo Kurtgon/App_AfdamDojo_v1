@@ -1,0 +1,62 @@
+<div class="main">
+    <div class="card">
+        <div class="cardHeader">
+            <h2>Afdam Dojo</h2>
+    </div>
+    <div class="img-card">
+        <img src="assets/imagenes/cabecera_inicio_afdam.jpg"
+        alt="imagen de cabecera de la pagina modificar mis datos">
+    </div>
+    <div class="content">
+        <div class="formGeneral">
+            <h2>Modificar mis Datos</h2>
+            <!-- Formulario Template driven -->
+            <form (ngSubmit)="actualizarMisDatos()" #updateMisDatosForm ="ngForm">
+                <div class="field">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" id="name" required [(ngModel)]="alumno.name" #name="ngModel">
+                    <div [hidden]="name.valid || name.pristine" class="alert-danger">* Campo Obligatorio</div>
+                </div>
+                <div class="field">
+                    <label for="surnames">Apellidos</label>
+                    <input type="text" class="form-control" placeholder="Apellidos" id="surnames" [(ngModel)]="alumno.surnames" #surname="ngModel">
+                </div>
+                <div class="field">
+                    <label for="dni">DNI</label>
+                    <input type="text" class="form-control" placeholder="dni" id="dni" required [(ngModel)]="alumno.dni" #dni="ngModel">
+                    <div [hidden]="dni.valid || dni.pristine" class="alert-danger">* Campo Obligatorio</div>
+                </div>
+                <div class="field">
+                    <label for="tfl">tfl</label>
+                    <input type="text" class="form-control" placeholder="tfl" id="tfl" [(ngModel)]="alumno.tfl" #tfl="ngModel">
+                </div>
+                <div class="field">
+                    <label for="address">Dirección</label>
+                    <input type="text" class="form-control" placeholder="Dirección" id="address" [(ngModel)]="alumno.address" #address="ngModel">
+                </div>
+                <div class="field">
+                    <label for="birthdate">Fecha de Nacimiento</label>
+                    <input type="text" class="form-control" placeholder="Fecha Nacimiento" id="birthdate" [(ngModel)]="alumno.birthdate" #birthdate="ngModel">
+                </div>
+                <div class="field">
+                    <label for="contact">Número de contacto</label>
+                    <input type="text" class="form-control" placeholder="Número de contacto" id="contact" [(ngModel)]="alumno.contact" #contact="ngModel">
+                </div>
+                <div class="field">
+                    <label for="allergy">Alérgias</label>
+                    <input type="text" class="form-control" placeholder="Alérgias" id="allergy" [(ngModel)]="alumno.allergy" #allergy="ngModel">
+                </div>
+                <div class="field">
+                    <label for="disciplinas">Disciplinas</label>
+                    <select name="disciplinas" [(ngModel)]="alumno.disciplinas">
+                        <option value="" selected>Elegir</option>
+                        <option *ngFor="let disciplina of disciplinas" [value]="disciplina">{{disciplina}}</option>
+                    </select>
+                </div>
+            
+                <button class="btn" type="submit" [disabled]="!updateMisDatosForm.form.valid" >Enviar</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

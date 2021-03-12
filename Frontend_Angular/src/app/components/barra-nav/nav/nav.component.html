@@ -2,20 +2,20 @@
 <div class="container">
     <nav class="barraNavegacion">
         <div class="imagenLogo">
-            <img src="../../../../assets/imagenes/Afdam_logo.png" alt="Logo de Afdam" routerLink="/index">
+            <img src="assets/imagenes/Afdam_logo.png" alt="Logo de Afdam" routerLink="/index">
         </div>
         <div class="menu">
-            <button class="botonIconoNav">
-                <img src="../../../../assets/imagenes/ModificarDatos.png"
+            <button class="botonIconoNav" routerLink="/gestionUsuarios/misdatos">
+                <img src="assets/imagenes/ModificarDatos.png"
                     alt="Icono para modificar los datos del Usuario"> Modificar Datos
                 </button>
 
-            <button class="botonIconoNav">
-                <img src="../../../../assets/imagenes/ModificarPassword.png" alt="Icono para modificar la contraseña"> Modificar Contraseña
+            <button class="botonIconoNav" routerLink="/gestionUsuarios/uppass">
+                <img src="assets/imagenes/ModificarPassword.png" alt="Icono para modificar la contraseña"> Modificar Contraseña
             </button>
 
             <button class="botonIconoNav">
-                <img src="../../../../assets/imagenes/CerrarSesion.png" alt="Icono para cerrar la sesión del usuario"> Cerrar Sesión
+                <img src="assets/imagenes/CerrarSesion.png" (click)="userLoginService.cerrarSesion()" alt="Icono para cerrar la sesión del usuario"> Cerrar Sesión
             </button>
         </div>
     </nav>

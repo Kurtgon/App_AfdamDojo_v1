@@ -29,8 +29,8 @@ export class IsLogedGuard implements CanActivate {
     // sino mostramos una alerta de error informando que no está logeado
     
 Swal.fire ({
-      title: 'No está logeado',
-      text: 'Para usar los servicios debe iniciar la sesión',
+      title: 'No has iniciado sesión',
+      text: 'Para acceder a la página tienes que iniciar la sesión',
       icon: 'error',
     });
     

@@ -1,6 +1,8 @@
 package com.jacaranda.appDojoAfdam.security.filter;
 
 
+import static com.jacaranda.appDojoAfdam.security.filter.jwt.JWTTokenProvider.generateToken;
+
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,19 +19,20 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.jacaranda.appDojoAfdam.model.entity.Persona;
+import com.jacaranda.appDojoAfdam.repo.PersonaRepository;
 import com.jacaranda.appDojoAfdam.security.common.SecurityConstants;
 import com.jacaranda.appDojoAfdam.security.model.User;
 import com.jacaranda.appDojoAfdam.security.model.dto.UserDTO;
 
-import static com.jacaranda.appDojoAfdam.security.common.SecurityConstants.HEADER_STRING;
-import static com.jacaranda.appDojoAfdam.security.common.SecurityConstants.TOKEN_PREFIX;
-import static com.jacaranda.appDojoAfdam.security.filter.jwt.JWTTokenProvider.generateToken;
 
 
 @WebFilter
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+	@Autowired
+	private PersonaRepository personaRepository;
+	
 	private static AuthenticationManager authenticationManager;
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
@@ -55,13 +59,16 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
-
+		
+		User user = (User) authResult.getPrincipal();
+		//getPersona(user);
 		//Lo que devolveremos en la petición
-		response.getWriter().print(generateToken((User) authResult.getPrincipal()));
+		response.getWriter().print(generateToken(user));
 		
 		//response.addHeader(HEADER_STRING, TOKEN_PREFIX + generateToken((User) authResult.getPrincipal()));
 	}
 	
-
-
+//	private Persona getPersona(User user) {
+//		return personaRepository.findPersonaByUser(user);
+//	}
 }

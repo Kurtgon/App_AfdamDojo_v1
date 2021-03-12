@@ -9,11 +9,13 @@
         </div>
         <div class="content">
             <h2>Datos Personales</h2>
+            <!--Formulario reactive form Datos Personales -->
             <form [formGroup]="loginForm">
                 <div class="field">
                     <label>Usuario</label>
                     <input type="text" placeholder="Nombre de usuario" formControlName="usuario">
                     <div class="campos" *ngIf="loginForm.controls.usuario.errors != undefined">
+                        <!--Controlamos los errores de validación del campo Usuario del formulario (longitud del campo) -->
                         <div class="errorEnValidacion" *ngIf="loginForm.controls.usuario.errors.minlength">El usuario
                             tiene que tener más de tres caractéres</div>
                     </div>
@@ -22,6 +24,7 @@
                     <label>Contraseña</label>
                     <input type="password" placeholder="Password" formControlName="password">
                     <div class="campos" *ngIf="loginForm.controls.password.errors != undefined">
+                        <!--Controlamos los errores de validación del campo Password del formulario (longitud del campo) y es un campo obligatorio -->
                         <div class="errorEnValidacion" *ngIf="this.loginForm.controls.password.errors?.required">El
                             campo password es obligatorio</div>
                         <div class="errorEnValidacion" *ngIf="this.loginForm.controls.password.errors?.minlength">El
@@ -31,6 +34,7 @@
                         <label>Email</label>
                         <input type="email" placeholder="Email" formControlName="email">
                         <div class="campos" *ngIf="loginForm.controls.email.errors != undefined">
+                            <!--Controlamos los errores de validación del campo Email del formulario (longitud del campo) y es un campo obligatorio -->
                             <div class="errorEnValidacion" *ngIf="loginForm.controls.email.errors?.required">El campo
                                 email es obligatorio</div>
                             <div class="errorEnValidacion" *ngIf="loginForm.controls.email.errors.minlength">El correo
@@ -49,6 +53,7 @@
                         <label>DNI</label>
                         <input type="text" placeholder="DNI" formControlName="dni">
                         <div class="campos" *ngIf="loginForm.controls.dni.errors != undefined">
+                             <!--Controlamos los errores de validación del campo DNI del formulario (longitud del campo) y es un campo obligatorio -->
                             <div class="errorEnValidacion" *ngIf="loginForm.controls.dni.errors?.required">El campo dni
                                 es obligatorio</div>
                             <div class="errorEnValidacion" *ngIf="loginForm.controls.dni.errors.minlength">El correo
@@ -73,12 +78,15 @@
                         <div class="field">
                             <label for="disciplinas">Disciplinas</label>
                             <select class= "desplegable" name="disciplinas" formControlName="disciplinas">
+                                <!-- Desplegable donde cargamos las disciplinas -->
                                 <option *ngFor="let disciplina of disciplinas" [value]="disciplina">
                                     {{disciplina}}
                                 </option>
                             </select>
                         </div>
                     </div>
+                    <!-- Cuando hacemos clic en el botón lanzamos el método enviar del registro.ts 
+                        para crear el alumno y redigirnos al login -->
                     <button class="btn" (click)="enviar()">Enviar</button>
                 </div>
             </form>

@@ -1,11 +1,24 @@
+@import 'src/sass/abstracts/mixins';
+@import 'src/sass/abstracts/variables';
 
-//Estilos para el botón en general
-  .btn{
-    width:100%;
-    padding:.8rem;
-    border:none;
-    border-radius:5px;
-    transition:.2s ease-in-out;
-    cursor:pointer;
-  
-  }
+
+//Estilos de botones generales
+.btn{
+    
+  @include coloresBoton();
+  color:$color;
+  @include textoBotones();
+  width:90%;
+  padding:.8rem;
+  border:none;
+  border-radius:5px;
+  transition:.2s ease-in-out;
+  cursor:pointer;
+  margin: 2vh 0;
+  font-size: 2vh;
+}
+.btn:hover{
+  background: $gradienteHover;
+  box-shadow: $efectoSombra;
+}
+

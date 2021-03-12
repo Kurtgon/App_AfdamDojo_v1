@@ -1,0 +1,40 @@
+@import 'src/sass/abstracts/mixins';
+@import 'src/sass/abstracts/variables';
+
+//Estilos para el formulario reactivo
+
+//Estilo general del contenedor del formulario
+.content{
+    @include contenedorCentradoPorColumnas();
+    padding: 1vh 0;
+    background-color: $colorFondoPrincipal;
+    font-size: 2vh;
+}
+
+//Estilos de los campos del formulario reactivo
+.field{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    font-family: 'Monda';
+    margin: 2vh 0;
+
+    input{
+        border-width: 0;
+        border-radius: 10vh;
+        background-color: rgb(148, 144, 144);
+        padding-left: 4vw;
+        font-size: 2vh;
+    }
+    
+    select{
+        height: 3vh;
+        color: $colorFondoPrincipal;
+    }
+}
+
+//Estilos de los errores de validación
+.errorEnValidacion{
+    color:#D60000;
+}

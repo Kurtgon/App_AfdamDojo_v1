@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,22 @@ public class UserController {
 	public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO) {
 		// Created only to retrieve the Bearer token once authenticated
 		return ResponseEntity.status(HttpStatus.OK).body(userDTO);
+	}
+
+	@PutMapping("/upPassUser")
+	public ResponseEntity<?> upPasswordUser(@RequestBody UserDTO userDTO) {
+		ResponseEntity<?> response;
+		try {
+			//if (userService.upPassOk(userDTO)) {
+				response = ResponseEntity.status(HttpStatus.OK).body(userService.upUser(userDTO));
+			//} else {
+			//	response = ResponseEntity.status(HttpStatus.CONFLICT).body("Error, la contraseña es incorrecta");
+			//}
+		} catch (Exception ex) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+
+		return response;
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.crypto.SecretKey;
 
+import com.jacaranda.appDojoAfdam.model.entity.Persona;
 import com.jacaranda.appDojoAfdam.security.common.SecurityConstants;
 import com.jacaranda.appDojoAfdam.security.model.User;
 
@@ -21,7 +22,7 @@ public class JWTTokenProvider {
 	public static String generateToken(User user) {
 		return Jwts.builder().setHeaderParam(Header.TYPE, Header.JWT_TYPE).setSubject(user.getId().toString())
 				.setId(user.getId().toString()).setIssuedAt(new Date(System.currentTimeMillis()))
-				.claim("updateTime", user.getUpdateTime())// Example
+				//.claim("p", persona)
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
 				.signWith(getKey(), SignatureAlgorithm.HS512).compact();
 	}

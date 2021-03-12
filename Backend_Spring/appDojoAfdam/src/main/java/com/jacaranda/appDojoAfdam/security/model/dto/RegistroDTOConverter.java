@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.jacaranda.appDojoAfdam.model.entity.Alumno;
@@ -18,12 +19,16 @@ public class RegistroDTOConverter {
 	@Autowired
 	private UserRepository userRepository;
 	
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	//Registro a User
 	public User FromRegistroDTOToUser(RegistroDTO dto) {
 		//Creamos el objeto
 		User user = new User();
 		user.setUsername(dto.getUsername());
-		user.setPassword(dto.getPassword());
+		user.setPassword(passwordEncoder.encode(dto.getPassword()));
 		user.setEmail(dto.getEmail());
 		user.setRoles(Set.of(UserRole.STUDENT));
 		user.setAuthenticationAttempts(0);

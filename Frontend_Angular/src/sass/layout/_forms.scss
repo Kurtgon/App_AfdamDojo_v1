@@ -1,0 +1,55 @@
+@import 'src/sass/abstracts/mixins';
+@import 'src/sass/abstracts/variables';
+
+
+//Estilo del contenedor del formulario
+.content{
+    @include contenedorCentradoPorColumnas();
+    padding: 2vh 0;
+    height: 45vh;
+    background-color: $colorFondoPrincipal;
+    font-size: 2vh;
+
+    .formGeneral{
+        @include contenedorCentradoPorColumnas();
+
+        h2{
+            @include contenedorCentrado();
+        }
+    }
+}
+
+//Estilos del formulario template
+.field{
+    @include textoBotones();
+    color: $colorTexoNav;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 2vh 0;
+
+        .ng-invalid{
+            border-left: solid 10px #d60000;
+        }
+    
+        .ng-pristine{
+            border-left: solid 10px #f7ce49;
+        }
+    
+        .ng-touched{
+            border-left: solid 10px #d60000;
+        }
+    
+        .ng-valid{
+            border-left: solid 10px #42A948;
+        }
+
+        input{
+           @include formatoInput();
+        }
+}
+
+//Estilos de la alerta de errores del formulario
+.alert-danger{
+    background-color: #d60000;
+}

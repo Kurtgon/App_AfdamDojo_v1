@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../Interfaces/user';
 
+import jwt_decode from "jwt-decode";
+
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticadorJwtService {
+
+
 
   constructor() { }
 
@@ -17,6 +21,8 @@ export class AutenticadorJwtService {
   almacenaJWT(token: string) {
     //Guardamos el jwt en local
     localStorage.setItem("jwt", token);
+    console.log(jwt_decode(token));
+    
   }
 
   //Recuperar el token (jwt)

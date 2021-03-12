@@ -1,0 +1,19 @@
+//Importamos las variables que vamos a necesitar
+@import 'src/sass/abstracts/variables';
+
+//Barra de navegación
+.barraNavegacion{
+    display: flex;
+    background: $colorFondoPrincipal;
+    width: 95vw;
+    justify-content: space-between;
+
+        .imagenLogo{
+            height: 12vh;
+            padding-left: 4vw;
+        
+            img{
+                height: 12vh;
+            }
+        }
+    }   

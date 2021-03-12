@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { Disciplina } from 'src/app/Interfaces/disciplina';
 import { Registro } from 'src/app/Interfaces/registro';
+
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { DisciplinaService } from 'src/app/services/disciplina.service';
-import { Router } from '@angular/router';
-import { Disciplina } from 'src/app/Interfaces/disciplina';
 
 
 @Component({
@@ -18,20 +20,21 @@ export class RegistroComponent implements OnInit {
   loginForm: FormGroup; // Permite tener un objeto linkado a los campos del formulario de autenticación
   ocultarPassword: boolean = true; // Utilizado para conocer si se muestra o se oculta el contenido del campo password
   disciplinas: Disciplina[];
-  disciplinas2: string [];
-
   registro: Registro;
 
+  // Inyectamos los servicios que vamos a necesitar, el de disciplina, el del alumno y el router
   constructor(private disciplinaService: DisciplinaService, private alumnoService: AlumnoService, private router:Router) { }
 
   ngOnInit(): void {
   
+    // Iniciamos el componente cargando las disciplinas
     this.cargarDisciplinas();
 
-
+    //Creamos las comprobaciones de los campos del formulario reative que requieran el validators y el control de todos los campos
+    //para crear el formulario
     this.loginForm = new FormGroup({
-      usuario: new FormControl('gonzalo', [Validators.required, Validators.minLength(4)]),
-      password: new FormControl('12345', [Validators.required, Validators.minLength(4)]),
+      usuario: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
       email: new FormControl('', [Validators.required, Validators.minLength(4)]),
       dni: new FormControl('', [Validators.required, Validators.minLength(8)]),
       name: new FormControl('',[]),
@@ -44,6 +47,7 @@ export class RegistroComponent implements OnInit {
     })
   }
 
+  //Método para enviar los valores de los campos del formulario
   enviar(){
     this.registro = {
       username: this.loginForm.value.usuario,
@@ -59,6 +63,8 @@ export class RegistroComponent implements OnInit {
       allergy: this.loginForm.value.allergy,
       disciplinas: this.loginForm.value.disciplinas
     }
+    // Nos suscribimos al servicio del alumno para crear el registro y redirigir
+    // con el navigate a la ruta login cuando hemos creado el alumno
     this.alumnoService.postRegistro(this.registro).subscribe((res:any)=>{
       this.router.navigate(['/login']);
     });
@@ -67,12 +73,10 @@ export class RegistroComponent implements OnInit {
   cargarDisciplinas(){
     this.disciplinas = [];
     this.disciplinaService.getListaDisciplinas().subscribe((res)=>{
-      console.log(res);
      res.forEach(element => {
         this.disciplinas.push(element);
      });
     })
   }
-
 
 }

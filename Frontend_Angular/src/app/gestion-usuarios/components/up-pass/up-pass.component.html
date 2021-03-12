@@ -1,0 +1,41 @@
+<div class="main">
+    <div class="card">
+        <div class="cardHeader">
+            <h2>Afdam Dojo</h2>
+        </div>
+        <div class="img-card">
+            <img src="assets/imagenes/Disciplina_ninjutsu_afdam-03.jpg"
+                alt="imagen de cabecera de la pagina modificar contraseña">
+        </div>
+        <div class="content">
+            <div class="formGeneral" [hidden]="submitted">
+                <h2>Modificar Password</h2>
+                <!-- Formulario Template driven -->
+                <form (ngSubmit)=" upPassword()" #updatePassForm="ngForm">
+                    <div class="field">
+                        <label for="password">Contraseña Actual</label>
+                        <input type="password" class="form-control" placeholder="Contraseña Actual" id="password"
+                            required [(ngModel)]="actualPassword" name="password" #password="ngModel">
+                        <div [hidden]="password.valid || password.pristine" class="alert-danger"> *Campo Obligatorio
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="password">Nueva Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Nueva Contraseña" id="password"
+                            required [(ngModel)]="newPassword" name="password" #password="ngModel">
+                        <div [hidden]="password.valid || password.pristine" class="alert-danger"> *Campo Obligatorio
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="password">Repetir Nueva Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Repetir Contraseña" id="password"
+                            required [(ngModel)]="confirmPassword" name="password" #password="ngModel">
+                        <div [hidden]="password.valid || password.pristine" class="alert-danger"> *Campo Obligatorio
+                        </div>
+                    </div>
+                    <button class="btn" type="submit" [disabled]="!updatePassForm.form.valid" >Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

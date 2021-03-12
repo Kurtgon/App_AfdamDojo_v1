@@ -26,6 +26,11 @@ public class AlumnoDTO {
 	private List<Clase> clases;
 	private List<Mensaje> mensajes;
 
+	
+	
+	public AlumnoDTO() {
+	}
+
 	// Get y Set
 	public int getId() {
 		return id;

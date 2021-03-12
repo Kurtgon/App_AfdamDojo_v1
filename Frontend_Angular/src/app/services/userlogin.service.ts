@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { User } from '../Interfaces/user';
 import {Router} from '@angular/router';
-import { exit } from 'node:process';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -11,25 +11,27 @@ import { exit } from 'node:process';
 })
 export class UserloginService {
 
-  constructor(private http: HttpClient, router:Router) { }
-
+  userLogin : User=null;
   
+  constructor(private http: HttpClient, private router:Router) { }
+
+  //Para utilizar el activeCam
   public statusUsuarioLog = new Subject<boolean>();
   public losStatus$ = this.statusUsuarioLog.asObservable();
   public url = "";
 
-  iniciarSesion(username:string, password:string) : Observable<any>{
-    let userLogin : User = {
-      username: username,
-      password: password
-    };
-    console.log("exito")
-    return this.http.post('http://localhost:8080/user/login', userLogin, {responseType: 'text'} );
+
+
+  iniciarSesion(userInicio: User) : Observable<any>{
+   this.userLogin = userInicio;
+    
+    return this.http.post(environment.loginUrl, this.userLogin, {responseType: 'text'} );
   }
 
   cerrarSesion(){
     //borramos todos los datos del localstore
     localStorage.clear();
+    this.router.navigate(['/index']);
   }
 
   modificarContraseña(nuevaPassword:string) : Observable<object>{

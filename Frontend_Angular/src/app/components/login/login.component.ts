@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../../Interfaces/user'
-import { Router } from '@angular/router';
+
 import {AutenticadorJwtService} from '../../services/autenticador-jwt.service';
-import { UserloginComponent } from '../userlogin/userlogin.component';
 import { UserloginService } from 'src/app/services/userlogin.service';
+
 import Swal from 'sweetalert2';
 
 
@@ -20,14 +21,14 @@ export class LoginComponent implements OnInit {
   onSubmit() { this.submitted = true; }
 
   user: User = null;
-
+  //Inyectamos los servicios que vamos a necesitar para autenticar al usuario cuando nos logueamos
   constructor(private userlogin: UserloginService, private jwt: AutenticadorJwtService, private router: Router) { }
 
   ngOnInit(): void {
 
     this.user = {
-      username: " ",
-      password: " "
+      username: "",
+      password: ""
     }
 
   }
@@ -36,20 +37,21 @@ export class LoginComponent implements OnInit {
     //Nos aseguramos que no hay usuarios logeados limpiando el localstore
     this.userlogin.cerrarSesion();
 
-    this.userlogin.iniciarSesion(this.user.username, this.user.password).subscribe((res)=>{
+    this.userlogin.iniciarSesion(this.user).subscribe((res)=>{
+      //Sistema de alertar y controlar errores
       Swal.fire({
         title: `${this.user.username}`, 
-        text: 'Logeado',
+        text: 'Bienvenido al Dojo',
         icon: 'success',
       })
       this.jwt.almacenaJWT(res);
+      this.jwt.almacenaUser(this.user);
       this.router.navigate(['/userlogin']);
     },
     (error) => {
-      console.log(error)
       Swal.fire({
-        title: `${error.error}`,
-        text: 'Error, Jwt no almacenado correctamente',
+        title: `Error al realizar el login`,
+        text: 'El usuario o el password no es correcto',
         icon: 'error'
       })
     })

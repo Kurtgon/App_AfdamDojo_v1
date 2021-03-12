@@ -1,0 +1,21 @@
+@import 'src/sass/abstracts/variables';
+
+
+//Estilos de la tarjeta
+.card {
+    width: 95vw;
+    min-height:70vh;
+    background-color: $colorFondoPrincipal;
+}
+//Estilos de la cabecera de la tarjeta
+.cardHeader  {
+    display: flex;
+    padding:1vh 1vw;
+    background: $colorCabeceraTarjeta;
+    font-size: 3vh;
+}
+
+//Imagen de la tarjeta
+.img-card img{
+    width: 100%;
+}

@@ -1,0 +1,32 @@
+@import 'src/sass/abstracts/variables';
+
+// Estilos del contenedor principal de la navegación
+.container {
+    @include contenedorCentrado();
+}
+
+//Elementos del menu de cabecera
+.menu{
+    display: flex;
+    align-items: flex-end;
+    
+    .botonIconoNav{
+        height: 10vh;
+        color: $colorTexoNav;
+        border: 0;
+        background: transparent;
+       
+        img{
+            height: 2vh;
+            margin-right: 1vw;
+        }
+    }
+
+    .botonIconoNav:hover{
+            background: $gradienteHover;
+            box-shadow: $efectoSombra;
+          
+    }
+}
+
+
